@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:turbo/config/routes/app_router.dart';
 import 'package:turbo/config/routes/router_generator.dart';
-import 'package:turbo/features/auth/modules/login/login_view.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: AppRouters.loginView,
       onGenerateRoute: RouterGenerator().onGenerateRoute,
-      // home: LoginView(),
     );
   }
 }
