@@ -21,7 +21,7 @@ class _AuthServices implements AuthServices {
   String? baseUrl;
 
   @override
-  Future<LoginResponsModel> login({required LoginReqwestModel request}) async {
+  Future<LoginResponsModel> login({required LoginRequestModel request}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

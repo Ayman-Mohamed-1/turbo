@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:turbo/config/routes/app_router.dart';
 import 'package:turbo/config/routes/router_generator.dart';
-
+import 'package:turbo/core/utils/di.dart';
 
 void main() {
+  setupDi();
   runApp(const MyApp());
 }
 

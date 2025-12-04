@@ -1,6 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:turbo/core/common/ui_widgets/app_elevated_button.dart';
 import 'package:turbo/core/common/ui_widgets/app_text_filed.dart';
+
+import 'package:turbo/features/auth/data/models/requst_model/login_request_model.dart';
 import 'package:turbo/features/auth/modules/common/password_textfield.dart';
+import 'package:turbo/features/auth/modules/login/cubit/auth_cubit.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -50,25 +57,26 @@ class _LoginFormState extends State<LoginForm> {
             ],
           ),
           const SizedBox(height: 20),
-          // BlocBuilder<LoginCubit, LoginState>(
-          //   builder: (context, state) {
-          //     return AppElevatedButton(
-          //       isLoading: state is LoginLoading,
-          //       onPressed: () {
-          //         log("here");
-          //         if (formKey.currentState!.validate()) {
-          //           context.read<LoginCubit>().login(
-          //             LoginRequestBody(
-          //               email: emailController.text,
-          //               password: passwordController.text,
-          //             ),
-          //           );
-          //         }
-          //       },
-          //       title: "Login",
-          //     );
-          //   },
-          // ),
+          BlocBuilder<AuthCubit, AuthState>(
+            builder: (context, state) {
+              return AppElevatedButton(
+                isLoading: state is AuthLoading,
+                onPressed: () {
+                  // log("here");
+                  log("test");
+                  if (formKey.currentState!.validate()) {
+                    context.read<AuthCubit>().login(
+                      LoginRequestModel(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      ),
+                    );
+                  }
+                },
+                title: "Login",
+              );
+            },
+          ),
           const SizedBox(height: 20),
           Center(
             child: Row(
